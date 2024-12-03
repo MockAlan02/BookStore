@@ -1,0 +1,19 @@
+<form class="form" action={{#if id}}"/author/update/{{id}}"{{else}}"/author/create"{{/if}} method="post"  class="container mt-5" style="width: 60%;display: flex;flex-direction: column; gap: 10px;">
+  {{#if id}}
+    <input type="hidden" name="id" value="{{id}}">
+    <h2 class="mx-auto">Update Author</h2>
+  {{else}}
+    <h2 class="mx-auto">Create Author</h2>
+  {{/if}}
+
+  <div class="form-group" >
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" value="{{author.name}}" required />
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" value="{{author.email}}" required />
+  </div>
+  <a href="/author" class="btn btn-secondary">Volver</a>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

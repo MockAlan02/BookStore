@@ -1,0 +1,84 @@
+.formcreate{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.containercard {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+}
+
+.card-img {
+    width: 100%;
+    height: auto;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.card-author, .card-year, .card-category, .card-editorial {
+    margin: 10px 0;
+}
+
+.card-actions {
+    margin-top: 20px;
+}
+
+.btn-edit, .btn-delete {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+.card-body {
+    text-align: left;
+}
+.btn-edit, .btn-delete {
+    margin: 5px;
+}

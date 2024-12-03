@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <a href="/publisher/create" class="btn btn-primary">Crear publicadora</a>
+  
+  {{#if publishers}}
+  <div class="row my-5">
+    <h2>Autores</h2>
+  
+    {{#each publishers}}
+      <div class="card" style="width: 18rem;margin:15px;" >
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{this.email}}</h6>
+          <p class="card-text">Cantidad de Libros Asociados: {{this.bookCount}}</p>
+          <p class="card-text">Pais: {{this.country}}</p>
+          <div class="d-flex card-buttons gap-2">
+            <a href="publisher/update/{{id}}" class="btn btn-primary">Editar</a>
+              <form id="form-delete-{{id}}" action="publisher/delete/{{id}}"  method="post" style="margin: 0;">
+              <button type="button" class="btn btn-danger" onclick="confirmDelete({{id}})">Eliminar</button>
+               </form>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+    </div>
+  {{else}}
+    <div>
+      <h2>No hay Autores</h2>
+    </div>
+  {{/if}}
+</div>
+
+<script>
+function confirmDelete(id){
+    Swal.fire({
+  title: "Estas seguro?",
+  text: "Los cambios no podran revertirse!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Si, eliminalo!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "Eliminado!",
+      text: "Tu Genero ha sido eliminado.",
+      icon: "success"
+    });
+    const form = document.getElementById(`form-delete-${id}`)
+    form.submit()
+  }
+});
+}
+
+
+</script>

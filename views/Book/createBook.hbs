@@ -1,0 +1,60 @@
+<form method="post" enctype="multipart/form-data" action={{#if id}}"/book/update/{{id}}"{{else}}"/book/create"{{/if}} class="container mt-5" style="width: 60%;display: flex;flex-direction: column; gap: 10px;">
+  <div style="width: 100%;">
+    {{#if id}}
+      <input type="hidden" name="id" value="{{id}}">
+      <h2 class="mx-auto">Actualizar Libro</h2>
+    {{else}}
+    <h2 class="mx-auto">Crear Libro</h2>
+    {{/if}}
+  </div>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" name="title"  value="{{book.title}}" required>
+  </div>
+
+  <div class="form-group">
+    <label for="year">Date Release</label>
+    <input type="date" class="form-control" id="year" name="year" value="{{book.year}}" required>
+  </div>
+
+  <div class="form-group">
+    <label for="image">Image</label>
+    <input type="file" class="form-control" id="image" name="Image" {{#unless id}}required{{/unless}}>
+  </div>
+  
+  {{#if id}}
+    <img src="{{book.picture}}" class="card-img-top" width="300px" height="300px" alt="Portada del libro">
+  {{/if}}
+  
+  <div class="form-group">
+    <label for="AuthorId">Author</label>
+   <select class="form-control" id="AuthorId" name="AuthorId" required>
+          <option value="">Select author</option>
+          {{#each authors}}
+            <option value="{{this.id}}" {{#if (compare this.id ../book.AuthorId)}}selected{{/if}}>{{this.name}}</option>
+          {{/each}}
+        </select>
+  </div>
+
+  <div class="form-group">
+    <label for="PublisherId">Publisher</label>
+     <select class="form-control" id="PublisherId" name="PublisherId" required>
+          <option value="">Select publisher</option>
+          {{#each publishers}}
+            <option value="{{this.id}}" {{#if (compare this.id ../book.PublisherId)}}selected{{/if}}>{{this.name}}</option>
+          {{/each}}
+        </select>
+  </div>
+
+  <div class="form-group">
+    <label for="GenreId">Genre</label>
+    <select class="form-control" id="GenreId" name="GenreId" required>
+          <option value="">Select genre</option>
+          {{#each genres}}
+            <option value="{{this.id}}" {{#if (compare this.id ../book.GenreId)}}selected{{/if}}>{{this.name}}</option>
+          {{/each}}
+        </select>
+  </div>
+  <a href="/book" class="btn btn-secondary">Volver</a>
+  <button type="submit" class="btn btn-primary btn-block mt-4">Submit</button>
+</form>

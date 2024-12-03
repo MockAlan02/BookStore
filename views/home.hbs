@@ -1,0 +1,31 @@
+<div class="container">
+<div>
+    <form action="/filter" method="get">
+        <input type="text" name="name" placeholder="Buscador Pokemon">
+        <select name="region" style="width: 150px;">
+        <option value="">Seleccionar region</option>
+        {{#each region}}
+           <option value="{{name}}">{{name}}</option>
+        {{/each}}
+        </select>
+        <button type="submit">Buscar</button>
+    </form>
+    <div  class="row">
+ {{#if hasPokemon}}
+    {{#each pokemon}}
+      <div class="card" style="width: 18rem;">
+        <img src="{{picture}}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{name}}</h5>
+          <p class="card-text">{{type}}</p>
+            <p class="card-text">{{region}}</p>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    <h1>No hay pokemones</h1>
+  {{/if}}
+    </div>
+
+</div>
+</div>

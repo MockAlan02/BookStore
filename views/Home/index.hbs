@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Libreria</h1>
+  <form id="filterForm" action="/home/filter" method="GET">
+    <div class="form-group">
+      <label for="title" class="mt-2">Título del Libro</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        placeholder="Ingrese el título del libro"
+      />
+    </div>
+    <div class="form-group">
+      <label for="categories " class="mt-2">Categorías</label>
+      <select multiple class="form-control" id="categories" name="categories[]">
+        {{#each genres}}
+          <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary MT-3">Filtrar</button>
+  </form>
+
+  <div class="container mt-3">
+    {{#if books}}
+      <div class="row">
+        {{#each books}}
+          <div
+            class="card"
+            style="width: 18rem;min-width: 200px;margin: 10px 10px;"
+          >
+            <img
+              src="{{this.picture}}"
+              class="card-img-top"
+              width="300px"
+              height="300px"
+              alt="Portada del libro"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{this.title}}</h5>
+              <p class="card-text"><strong>Autor:</strong>
+                {{this.AuthorName}}</p>
+              <p class="card-text"><strong>Año de Publicación:</strong>
+                {{this.year}}</p>
+              <p class="card-text"><strong>Categoría:</strong>
+                {{this.GenreName}}</p>
+              <p class="card-text"><strong>Editorial:</strong>
+                {{this.PublisherName}}</p>
+              <div class="d-flex">
+              </div>
+            </div>
+            <a href="/home/details/{{this.id}}" class="btn btn-primary mb-2">Detalles</a>
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+    {{/if}}
+  </div>
+</div>

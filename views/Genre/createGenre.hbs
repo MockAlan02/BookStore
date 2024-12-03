@@ -1,0 +1,29 @@
+<form class="form" method="post" action={{#if id}}"/genre/update/{{id}}"{{else}}"/genre/create"{{/if}} class="container mt-5" style="width: 60%;display: flex;flex-direction: column; gap: 10px;" >
+
+{{#if id}}
+  <input type="hidden" name="id" value="{{id}}">
+  <h1>Edit Genre</h1>
+{{else}}
+  <h1>Create Genre</h1>
+{{/if}}
+  <div class="form-group">
+    
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" value="{{genre.name}}" required />
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      name="description"
+      value="{{genre.description}}"
+      required
+    />
+
+  </div>
+  <a href="/genre" class="btn btn-secondary">Volver</a>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
